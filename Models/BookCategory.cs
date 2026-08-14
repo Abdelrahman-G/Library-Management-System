@@ -1,6 +1,10 @@
-﻿namespace Library_Management_System.Models
+﻿namespace Library_Management_System.Models;
+
+public class BookCategory
 {
-    public class BookCategory
-    {
-    }
+    public int BookId { get; set; }
+    public Book Book { get; set; } = null!;
+
+    public int CategoryId { get; set; }
+    public Category Category { get; set; } = null!;
 }
