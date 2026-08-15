@@ -1,18 +1,5 @@
 # Library Management System
 
-RESTful ASP.NET Core Web API for managing a library catalog, physical book copies, members, system users, roles, and borrowing transactions.
-
-The project was created for the CODE81 Library Management System challenge. It uses a controller-service-data structure to keep HTTP handling, business logic, and database access separated without introducing unnecessary architectural layers.
-
-## Technology stack
-
-- .NET 8 and ASP.NET Core Web API
-- Entity Framework Core 8
-- SQL Server
-- JWT bearer authentication
-- ASP.NET Core `PasswordHasher<TUser>`
-- Swagger / OpenAPI
-
 ## Main features
 
 - CRUD operations for publishers, authors, categories, books, physical book copies, members, roles, and system users
