@@ -45,7 +45,6 @@ Book-level availability is derived from its copies:
 
 - `In`: at least one copy has `Available` status.
 - `Out`: the book has one or more copies, but none are available.
-- A book with no physical copies is excluded from both results.
 
 ### Authors and categories
 
@@ -57,7 +56,7 @@ Books and categories have a many-to-many relationship through `BookCategory`.
 
 ### Publishers
 
-A publisher can publish many books, while each book references one publisher. Publisher deletion is restricted while books still reference it.
+A publisher can publish many books, while each book references one publisher.
 
 ### Members and system users
 
