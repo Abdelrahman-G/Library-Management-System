@@ -6,4 +6,6 @@ public static class RoleNames
     public const string Librarian = "Librarian";
     public const string Staff = "Staff";
     public const string AdministratorOrLibrarian = Administrator + "," + Librarian;
+    public const string CirculationRoles =
+        Administrator + "," + Librarian + "," + Staff;
 }

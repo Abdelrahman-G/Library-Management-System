@@ -18,5 +18,6 @@ public class BorrowingTransaction
 
     public DateTime BorrowedAt { get; set; }
     public DateTime DueAt { get; set; }
+
     public DateTime? ReturnedAt { get; set; }
 }
