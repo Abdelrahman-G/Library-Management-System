@@ -10,11 +10,16 @@ public class AuthenticationService : IAuthenticationService
 {
     private readonly LibraryDbContext _context;
     private readonly IPasswordHasher<SystemUser> _passwordHasher;
+    private readonly ITokenService _tokenService;
 
-    public AuthenticationService(LibraryDbContext context, IPasswordHasher<SystemUser> passwordHasher)
+    public AuthenticationService(
+        LibraryDbContext context,
+        IPasswordHasher<SystemUser> passwordHasher,
+        ITokenService tokenService)
     {
         _context = context;
         _passwordHasher = passwordHasher;
+        _tokenService = tokenService;
     }
 
     public async Task<LoginResponse?> AuthenticateAsync(
@@ -42,6 +47,8 @@ public class AuthenticationService : IAuthenticationService
         if (verificationResult == PasswordVerificationResult.Failed)
             return null;
 
+        var tokenResult = _tokenService.CreateToken(user);
+
         return new LoginResponse
         {
             SystemUserId = user.SystemUserId,
@@ -50,7 +57,9 @@ public class AuthenticationService : IAuthenticationService
             Roles = user.SystemUserRoles
                 .OrderBy(userRole => userRole.Role.RoleName)
                 .Select(userRole => userRole.Role.RoleName)
-                .ToList()
+                .ToList(),
+            AccessToken = tokenResult.AccessToken,
+            ExpiresAtUtc = tokenResult.ExpiresAtUtc
         };
     }
 }

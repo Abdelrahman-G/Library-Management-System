@@ -5,9 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Library_Management_System</RootNamespace>
+    <UserSecretsId>f18de9bb-c7ef-4125-93a6-bed30267a0a3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.20">
