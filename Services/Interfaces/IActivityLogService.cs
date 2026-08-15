@@ -13,6 +13,5 @@ public interface IActivityLogService
 
     Task<IReadOnlyList<ActivityLogResponse>> GetAllAsync(
         int? systemUserId,
-        string? action,
         CancellationToken cancellationToken = default);
 }

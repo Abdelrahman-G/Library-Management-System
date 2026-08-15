@@ -1,5 +1,6 @@
 ﻿using Library_Management_System.DTOs.Books;
 using Library_Management_System.DTOs.BookCopies;
+using Library_Management_System.Enums;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
 using Library_Management_System.Authorization;
@@ -24,6 +25,17 @@ public class BooksController : ControllerBase
         [FromQuery] BookSearchRequest request,
         CancellationToken token)
         => Ok(await _service.SearchAsync(request, token));
+
+    [HttpGet("by-status/{status}")]
+    public async Task<ActionResult<IReadOnlyList<BookResponse>>> GetByStatus(
+        BookAvailabilityStatus status,
+        CancellationToken token)
+    {
+        if (!Enum.IsDefined(status))
+            return BadRequest(new { message = "Status must be In or Out." });
+
+        return Ok(await _service.GetByStatusAsync(status, token));
+    }
 
     [HttpGet("{bookId:int}")]
     public async Task<ActionResult<BookResponse>> GetById(int bookId, CancellationToken token)

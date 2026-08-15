@@ -18,7 +18,6 @@ public class ActivityLogsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<ActivityLogResponse>>> GetAll(
         [FromQuery] int? systemUserId,
-        [FromQuery] string? action,
         CancellationToken token)
-        => Ok(await _service.GetAllAsync(systemUserId, action, token));
+        => Ok(await _service.GetAllAsync(systemUserId, token));
 }
