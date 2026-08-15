@@ -1,10 +1,13 @@
 ﻿using Library_Management_System.DTOs.BookCopies;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
+using Library_Management_System.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library_Management_System.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class BookCopiesController : ControllerBase
@@ -22,6 +25,7 @@ public class BookCopiesController : ControllerBase
         return copy is null ? NotFound() : Ok(copy);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPost]
     public async Task<ActionResult<BookCopyResponse>> Create(CreateBookCopyRequest request, CancellationToken token)
     {
@@ -30,6 +34,7 @@ public class BookCopiesController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { bookCopyId = copy.BookCopyId }, copy);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPut("{bookCopyId:int}")]
     public async Task<IActionResult> Update(int bookCopyId, UpdateBookCopyRequest request, CancellationToken token)
     {
@@ -42,6 +47,7 @@ public class BookCopiesController : ControllerBase
         };
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpDelete("{bookCopyId:int}")]
     public async Task<IActionResult> Delete(int bookCopyId, CancellationToken token)
     {

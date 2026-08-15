@@ -1,10 +1,13 @@
 ﻿using Library_Management_System.DTOs.Books;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
+using Library_Management_System.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library_Management_System.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class BooksController : ControllerBase
@@ -29,6 +32,7 @@ public class BooksController : ControllerBase
         return availability is null ? NotFound() : Ok(availability);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPost]
     public async Task<ActionResult<BookResponse>> Create(CreateBookRequest request, CancellationToken token)
     {
@@ -37,6 +41,7 @@ public class BooksController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { bookId = book.BookId }, book);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPut("{bookId:int}")]
     public async Task<IActionResult> Update(int bookId, UpdateBookRequest request, CancellationToken token)
     {
@@ -49,6 +54,7 @@ public class BooksController : ControllerBase
         };
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpDelete("{bookId:int}")]
     public async Task<IActionResult> Delete(int bookId, CancellationToken token)
     {

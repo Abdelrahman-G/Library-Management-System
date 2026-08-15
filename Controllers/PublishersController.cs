@@ -1,10 +1,13 @@
 using Library_Management_System.DTOs.Publishers;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
+using Library_Management_System.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library_Management_System.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class PublishersController : ControllerBase
@@ -24,6 +27,7 @@ public class PublishersController : ControllerBase
         return publisher is null ? NotFound() : Ok(publisher);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPost]
     public async Task<ActionResult<PublisherResponse>> Create(CreatePublisherRequest request, CancellationToken token)
     {
@@ -31,10 +35,12 @@ public class PublishersController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { publisherId = publisher.PublisherId }, publisher);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPut("{publisherId:int}")]
     public async Task<IActionResult> Update(int publisherId, UpdatePublisherRequest request, CancellationToken token)
         => await _service.UpdateAsync(publisherId, request, token) ? NoContent() : NotFound();
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpDelete("{publisherId:int}")]
     public async Task<IActionResult> Delete(int publisherId, CancellationToken token)
     {

@@ -1,10 +1,13 @@
 ﻿using Library_Management_System.DTOs.Categories;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
+using Library_Management_System.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library_Management_System.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class CategoriesController : ControllerBase
@@ -22,6 +25,7 @@ public class CategoriesController : ControllerBase
         return category is null ? NotFound() : Ok(category);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPost]
     public async Task<ActionResult<CategoryResponse>> Create(CreateCategoryRequest request, CancellationToken token)
     {
@@ -30,6 +34,7 @@ public class CategoriesController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { categoryId = category.CategoryId }, category);
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpPut("{categoryId:int}")]
     public async Task<IActionResult> Update(int categoryId, UpdateCategoryRequest request, CancellationToken token)
     {
@@ -42,6 +47,7 @@ public class CategoriesController : ControllerBase
         };
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpDelete("{categoryId:int}")]
     public async Task<IActionResult> Delete(int categoryId, CancellationToken token)
     {
