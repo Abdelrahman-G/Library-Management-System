@@ -49,4 +49,18 @@ public class AuthController : ControllerBase
                 .ToList()
         });
     }
+
+    [Authorize]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout(CancellationToken token)
+    {
+        var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!int.TryParse(userIdValue, out var systemUserId))
+            return Unauthorized();
+
+        return await _service.LogoutAsync(systemUserId, token)
+            ? NoContent()
+            : Unauthorized();
+    }
 }

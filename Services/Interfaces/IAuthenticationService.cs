@@ -7,4 +7,8 @@ public interface IAuthenticationService
     Task<LoginResponse?> AuthenticateAsync(
         LoginRequest request,
         CancellationToken cancellationToken = default);
+
+    Task<bool> LogoutAsync(
+        int systemUserId,
+        CancellationToken cancellationToken = default);
 }

@@ -69,4 +69,10 @@ public class SystemUsersController : ControllerBase
             _ => throw new InvalidOperationException()
         };
     }
+
+    [HttpPost("{systemUserId:int}/terminate-sessions")]
+    public async Task<IActionResult> TerminateSessions(int systemUserId, CancellationToken token)
+        => await _service.TerminateSessionsAsync(systemUserId, token)
+            ? NoContent()
+            : NotFound();
 }

@@ -10,4 +10,5 @@ public interface ISystemUserService
     Task<SystemUserSaveResult> CreateAsync(CreateSystemUserRequest request, CancellationToken cancellationToken = default);
     Task<SystemUserSaveResult> UpdateAsync(int systemUserId, UpdateSystemUserRequest request, CancellationToken cancellationToken = default);
     Task<DeleteResult> DeleteAsync(int systemUserId, CancellationToken cancellationToken = default);
+    Task<bool> TerminateSessionsAsync(int systemUserId, CancellationToken cancellationToken = default);
 }

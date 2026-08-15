@@ -83,6 +83,9 @@ public class SystemUserService : ISystemUserService
         if (!await RolesExistAsync(roleIds, cancellationToken))
             return new SystemUserSaveResult(SystemUserSaveStatus.InvalidRoles);
 
+        var rolesChanged = user.SystemUserRoles.Count != roleIds.Count ||
+                           user.SystemUserRoles.Any(userRole => !roleIds.Contains(userRole.RoleId));
+
         user.Username = username;
         user.Email = request.Email.Trim();
         user.IsActive = request.IsActive;
@@ -96,6 +99,9 @@ public class SystemUserService : ISystemUserService
             if (user.SystemUserRoles.All(userRole => userRole.RoleId != roleId))
                 user.SystemUserRoles.Add(new SystemUserRole { RoleId = roleId });
 
+        if (rolesChanged)
+            user.TokenVersion++;
+
         await _context.SaveChangesAsync(cancellationToken);
         return new SystemUserSaveResult(SystemUserSaveStatus.Success);
     }
@@ -108,6 +114,21 @@ public class SystemUserService : ISystemUserService
         user.IsActive = false;
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
+    }
+
+    public async Task<bool> TerminateSessionsAsync(
+        int systemUserId,
+        CancellationToken cancellationToken = default)
+    {
+        var updatedUserCount = await _context.SystemUsers
+            .Where(user => user.SystemUserId == systemUserId)
+            .ExecuteUpdateAsync(
+                setters => setters.SetProperty(
+                    user => user.TokenVersion,
+                    user => user.TokenVersion + 1),
+                cancellationToken);
+
+        return updatedUserCount == 1;
     }
 
     private IQueryable<SystemUserResponse> Query()
