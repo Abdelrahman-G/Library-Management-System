@@ -1,10 +1,13 @@
 ﻿using Library_Management_System.DTOs.Members;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
+using Library_Management_System.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library_Management_System.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class MembersController : ControllerBase
@@ -42,6 +45,7 @@ public class MembersController : ControllerBase
         };
     }
 
+    [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]
     [HttpDelete("{memberId:int}")]
     public async Task<IActionResult> Delete(int memberId, CancellationToken token)
     {

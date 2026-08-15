@@ -1,10 +1,13 @@
 using Library_Management_System.DTOs.SystemUsers;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
+using Library_Management_System.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library_Management_System.Controllers;
 
+[Authorize(Roles = RoleNames.Administrator)]
 [ApiController]
 [Route("api/[controller]")]
 public class SystemUsersController : ControllerBase
