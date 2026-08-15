@@ -25,6 +25,37 @@ public class BookService : IBookService
         return await Query().OrderBy(book => book.Title).ToListAsync(cancellationToken);
     }
 
+    public async Task<IReadOnlyList<BookResponse>> SearchAsync(
+        BookSearchRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var query = _context.Books.AsNoTracking();
+
+        if (!string.IsNullOrWhiteSpace(request.Name))
+        {
+            var name = request.Name.Trim();
+            query = query.Where(book => book.Title.Contains(name));
+        }
+
+        if (!string.IsNullOrWhiteSpace(request.Author))
+        {
+            var author = request.Author.Trim();
+            query = query.Where(book => book.Authors.Any(
+                link => link.Author.AuthorName.Contains(author)));
+        }
+
+        if (!string.IsNullOrWhiteSpace(request.Category))
+        {
+            var category = request.Category.Trim();
+            query = query.Where(book => book.Categories.Any(
+                link => link.Category.CategoryName.Contains(category)));
+        }
+
+        return await Query(query)
+            .OrderBy(book => book.Title)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<BookResponse?> GetByIdAsync(int bookId, CancellationToken cancellationToken = default)
     {
         return await Query().FirstOrDefaultAsync(book => book.BookId == bookId, cancellationToken);
@@ -174,9 +205,11 @@ public class BookService : IBookService
         return await _context.Categories.CountAsync(category => categoryIds.Contains(category.CategoryId), cancellationToken) == categoryIds.Count;
     }
 
-    private IQueryable<BookResponse> Query()
+    private IQueryable<BookResponse> Query(IQueryable<Book>? books = null)
     {
-        return _context.Books.AsNoTracking().Select(book => new BookResponse
+        books ??= _context.Books.AsNoTracking();
+
+        return books.Select(book => new BookResponse
         {
             BookId = book.BookId,
             Title = book.Title,
