@@ -19,6 +19,12 @@ public class BooksController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<BookResponse>>> GetAll(CancellationToken token) => Ok(await _service.GetAllAsync(token));
 
+    [HttpGet("search")]
+    public async Task<ActionResult<IReadOnlyList<BookResponse>>> Search(
+        [FromQuery] BookSearchRequest request,
+        CancellationToken token)
+        => Ok(await _service.SearchAsync(request, token));
+
     [HttpGet("{bookId:int}")]
     public async Task<ActionResult<BookResponse>> GetById(int bookId, CancellationToken token)
     {
