@@ -1,4 +1,5 @@
 ﻿using Library_Management_System.DTOs.Books;
+using Library_Management_System.DTOs.BookCopies;
 using Library_Management_System.Services.Interfaces;
 using Library_Management_System.Services.Results;
 using Library_Management_System.Authorization;
@@ -30,6 +31,15 @@ public class BooksController : ControllerBase
     {
         var availability = await _service.GetAvailabilityAsync(bookId, token);
         return availability is null ? NotFound() : Ok(availability);
+    }
+
+    [HttpGet("{bookId:int}/copies")]
+    public async Task<ActionResult<IReadOnlyList<BookCopyResponse>>> GetCopies(
+        int bookId,
+        CancellationToken token)
+    {
+        var copies = await _service.GetCopiesAsync(bookId, token);
+        return copies is null ? NotFound() : Ok(copies);
     }
 
     [Authorize(Roles = RoleNames.AdministratorOrLibrarian)]

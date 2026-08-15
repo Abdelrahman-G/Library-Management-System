@@ -1,4 +1,5 @@
 ﻿using Library_Management_System.DTOs.Books;
+using Library_Management_System.DTOs.BookCopies;
 using Library_Management_System.Enums;
 using Library_Management_System.Models;
 using Library_Management_System.Services.Interfaces;
@@ -39,6 +40,33 @@ public class BookService : IBookService
                 AvailableCopies = book.Copies.Count(copy => copy.Status == BookCopyStatus.Available)
             })
             .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    public async Task<IReadOnlyList<BookCopyResponse>?> GetCopiesAsync(
+        int bookId,
+        CancellationToken cancellationToken = default)
+    {
+        if (!await _context.Books.AnyAsync(
+                book => book.BookId == bookId,
+                cancellationToken))
+        {
+            return null;
+        }
+
+        return await _context.BookCopies
+            .AsNoTracking()
+            .Where(copy => copy.BookId == bookId)
+            .OrderBy(copy => copy.BookCopyId)
+            .Select(copy => new BookCopyResponse
+            {
+                BookCopyId = copy.BookCopyId,
+                BookId = copy.BookId,
+                BookTitle = copy.Book.Title,
+                Status = copy.Status,
+                Location = copy.Location,
+                BorrowingCount = copy.BorrowingTransactions.Count
+            })
+            .ToListAsync(cancellationToken);
     }
 
     public async Task<BookResponse?> CreateAsync(CreateBookRequest request, CancellationToken cancellationToken = default)
