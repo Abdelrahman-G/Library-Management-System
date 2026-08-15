@@ -12,8 +12,13 @@ namespace Library_Management_System.Services;
 public class BookService : IBookService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public BookService(LibraryDbContext context) => _context = context;
+    public BookService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<BookResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -94,6 +99,8 @@ public class BookService : IBookService
 
         _context.Books.Add(book);
         await _context.SaveChangesAsync(cancellationToken);
+        _activityLog.Add(ActivityLogActions.BookCreated, nameof(Book), book.BookId);
+        await _context.SaveChangesAsync(cancellationToken);
         return await GetByIdAsync(book.BookId, cancellationToken);
     }
 
@@ -137,6 +144,7 @@ public class BookService : IBookService
             if (book.Categories.All(link => link.CategoryId != categoryId))
                 book.Categories.Add(new BookCategory { CategoryId = categoryId });
 
+        _activityLog.Add(ActivityLogActions.BookUpdated, nameof(Book), bookId);
         await _context.SaveChangesAsync(cancellationToken);
         return UpdateResult.Success;
     }
@@ -149,6 +157,7 @@ public class BookService : IBookService
             return DeleteResult.HasDependencies;
 
         _context.Books.Remove(book);
+        _activityLog.Add(ActivityLogActions.BookDeleted, nameof(Book), bookId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

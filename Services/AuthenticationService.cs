@@ -11,15 +11,18 @@ public class AuthenticationService : IAuthenticationService
     private readonly LibraryDbContext _context;
     private readonly IPasswordHasher<SystemUser> _passwordHasher;
     private readonly ITokenService _tokenService;
+    private readonly IActivityLogService _activityLog;
 
     public AuthenticationService(
         LibraryDbContext context,
         IPasswordHasher<SystemUser> passwordHasher,
-        ITokenService tokenService)
+        ITokenService tokenService,
+        IActivityLogService activityLog)
     {
         _context = context;
         _passwordHasher = passwordHasher;
         _tokenService = tokenService;
+        _activityLog = activityLog;
     }
 
     public async Task<LoginResponse?> AuthenticateAsync(
@@ -49,6 +52,13 @@ public class AuthenticationService : IAuthenticationService
 
         var tokenResult = _tokenService.CreateToken(user);
 
+        _activityLog.Add(
+            ActivityLogActions.LoginSucceeded,
+            nameof(SystemUser),
+            user.SystemUserId,
+            systemUserId: user.SystemUserId);
+        await _context.SaveChangesAsync(cancellationToken);
+
         return new LoginResponse
         {
             SystemUserId = user.SystemUserId,
@@ -75,6 +85,15 @@ public class AuthenticationService : IAuthenticationService
                     user => user.TokenVersion + 1),
                 cancellationToken);
 
-        return updatedUserCount == 1;
+        if (updatedUserCount != 1)
+            return false;
+
+        _activityLog.Add(
+            ActivityLogActions.Logout,
+            nameof(SystemUser),
+            systemUserId,
+            systemUserId: systemUserId);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
     }
 }

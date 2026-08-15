@@ -10,8 +10,13 @@ namespace Library_Management_System.Services;
 public class AuthorService : IAuthorService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public AuthorService(LibraryDbContext context) => _context = context;
+    public AuthorService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<AuthorResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -28,6 +33,8 @@ public class AuthorService : IAuthorService
         var author = new Author { AuthorName = request.AuthorName.Trim() };
         _context.Authors.Add(author);
         await _context.SaveChangesAsync(cancellationToken);
+        _activityLog.Add(ActivityLogActions.AuthorCreated, nameof(Author), author.AuthorId);
+        await _context.SaveChangesAsync(cancellationToken);
         return new AuthorResponse { AuthorId = author.AuthorId, AuthorName = author.AuthorName };
     }
 
@@ -37,6 +44,7 @@ public class AuthorService : IAuthorService
         if (author is null) return false;
 
         author.AuthorName = request.AuthorName.Trim();
+        _activityLog.Add(ActivityLogActions.AuthorUpdated, nameof(Author), authorId);
         await _context.SaveChangesAsync(cancellationToken);
         return true;
     }
@@ -50,6 +58,7 @@ public class AuthorService : IAuthorService
             return DeleteResult.HasDependencies;
 
         _context.Authors.Remove(author);
+        _activityLog.Add(ActivityLogActions.AuthorDeleted, nameof(Author), authorId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

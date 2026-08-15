@@ -10,8 +10,13 @@ namespace Library_Management_System.Services;
 public class CategoryService : ICategoryService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public CategoryService(LibraryDbContext context) => _context = context;
+    public CategoryService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<CategoryResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -37,6 +42,8 @@ public class CategoryService : ICategoryService
 
         _context.Categories.Add(category);
         await _context.SaveChangesAsync(cancellationToken);
+        _activityLog.Add(ActivityLogActions.CategoryCreated, nameof(Category), category.CategoryId);
+        await _context.SaveChangesAsync(cancellationToken);
         return await GetByIdAsync(category.CategoryId, cancellationToken);
     }
 
@@ -52,6 +59,7 @@ public class CategoryService : ICategoryService
 
         category.CategoryName = request.CategoryName.Trim();
         category.ParentCategoryId = request.ParentCategoryId;
+        _activityLog.Add(ActivityLogActions.CategoryUpdated, nameof(Category), categoryId);
         await _context.SaveChangesAsync(cancellationToken);
         return UpdateResult.Success;
     }
@@ -66,6 +74,7 @@ public class CategoryService : ICategoryService
         if (hasDependencies) return DeleteResult.HasDependencies;
 
         _context.Categories.Remove(category);
+        _activityLog.Add(ActivityLogActions.CategoryDeleted, nameof(Category), categoryId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

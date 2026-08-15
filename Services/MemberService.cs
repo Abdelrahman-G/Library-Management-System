@@ -10,8 +10,13 @@ namespace Library_Management_System.Services;
 public class MemberService : IMemberService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public MemberService(LibraryDbContext context) => _context = context;
+    public MemberService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<MemberResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -43,6 +48,8 @@ public class MemberService : IMemberService
 
         _context.Members.Add(member);
         await _context.SaveChangesAsync(cancellationToken);
+        _activityLog.Add(ActivityLogActions.MemberCreated, nameof(Member), member.MemberId);
+        await _context.SaveChangesAsync(cancellationToken);
         return await GetByIdAsync(member.MemberId, cancellationToken);
     }
 
@@ -64,6 +71,7 @@ public class MemberService : IMemberService
         member.Address = request.Address.Trim();
         member.JoinDate = (request.JoinDate ?? member.JoinDate).Date;
 
+        _activityLog.Add(ActivityLogActions.MemberUpdated, nameof(Member), memberId);
         await _context.SaveChangesAsync(cancellationToken);
         return UpdateResult.Success;
     }
@@ -76,6 +84,7 @@ public class MemberService : IMemberService
             return DeleteResult.HasDependencies;
 
         _context.Members.Remove(member);
+        _activityLog.Add(ActivityLogActions.MemberDeleted, nameof(Member), memberId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

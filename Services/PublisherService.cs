@@ -10,8 +10,13 @@ namespace Library_Management_System.Services;
 public class PublisherService : IPublisherService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public PublisherService(LibraryDbContext context) => _context = context;
+    public PublisherService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<PublisherResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -29,6 +34,12 @@ public class PublisherService : IPublisherService
         _context.Publishers.Add(publisher);
         await _context.SaveChangesAsync(cancellationToken);
 
+        _activityLog.Add(
+            ActivityLogActions.PublisherCreated,
+            nameof(Publisher),
+            publisher.PublisherId);
+        await _context.SaveChangesAsync(cancellationToken);
+
         return new PublisherResponse
         {
             PublisherId = publisher.PublisherId,
@@ -42,6 +53,7 @@ public class PublisherService : IPublisherService
         if (publisher is null) return false;
 
         publisher.PublisherName = request.PublisherName.Trim();
+        _activityLog.Add(ActivityLogActions.PublisherUpdated, nameof(Publisher), publisherId);
         await _context.SaveChangesAsync(cancellationToken);
         return true;
     }
@@ -54,6 +66,7 @@ public class PublisherService : IPublisherService
             return DeleteResult.HasDependencies;
 
         _context.Publishers.Remove(publisher);
+        _activityLog.Add(ActivityLogActions.PublisherDeleted, nameof(Publisher), publisherId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

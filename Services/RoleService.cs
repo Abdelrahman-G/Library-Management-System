@@ -10,8 +10,13 @@ namespace Library_Management_System.Services;
 public class RoleService : IRoleService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public RoleService(LibraryDbContext context) => _context = context;
+    public RoleService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<RoleResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -31,6 +36,8 @@ public class RoleService : IRoleService
         var role = new Role { RoleName = roleName };
         _context.Roles.Add(role);
         await _context.SaveChangesAsync(cancellationToken);
+        _activityLog.Add(ActivityLogActions.RoleCreated, nameof(Role), role.RoleId);
+        await _context.SaveChangesAsync(cancellationToken);
         return new RoleResponse { RoleId = role.RoleId, RoleName = role.RoleName };
     }
 
@@ -44,6 +51,7 @@ public class RoleService : IRoleService
             return UpdateResult.InvalidReference;
 
         role.RoleName = roleName;
+        _activityLog.Add(ActivityLogActions.RoleUpdated, nameof(Role), roleId);
         await _context.SaveChangesAsync(cancellationToken);
         return UpdateResult.Success;
     }
@@ -56,6 +64,7 @@ public class RoleService : IRoleService
             return DeleteResult.HasDependencies;
 
         _context.Roles.Remove(role);
+        _activityLog.Add(ActivityLogActions.RoleDeleted, nameof(Role), roleId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

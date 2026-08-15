@@ -12,13 +12,16 @@ public class SystemUserService : ISystemUserService
 {
     private readonly LibraryDbContext _context;
     private readonly IPasswordHasher<SystemUser> _passwordHasher;
+    private readonly IActivityLogService _activityLog;
 
     public SystemUserService(
         LibraryDbContext context,
-        IPasswordHasher<SystemUser> passwordHasher)
+        IPasswordHasher<SystemUser> passwordHasher,
+        IActivityLogService activityLog)
     {
         _context = context;
         _passwordHasher = passwordHasher;
+        _activityLog = activityLog;
     }
 
     public async Task<IReadOnlyList<SystemUserResponse>> GetAllAsync(CancellationToken cancellationToken = default)
@@ -57,6 +60,9 @@ public class SystemUserService : ISystemUserService
             user.SystemUserRoles.Add(new SystemUserRole { RoleId = roleId });
 
         _context.SystemUsers.Add(user);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        _activityLog.Add(ActivityLogActions.SystemUserCreated, nameof(SystemUser), user.SystemUserId);
         await _context.SaveChangesAsync(cancellationToken);
 
         var response = await GetByIdAsync(user.SystemUserId, cancellationToken);
@@ -100,7 +106,16 @@ public class SystemUserService : ISystemUserService
                 user.SystemUserRoles.Add(new SystemUserRole { RoleId = roleId });
 
         if (rolesChanged)
+        {
             user.TokenVersion++;
+            _activityLog.Add(
+                ActivityLogActions.SystemUserRolesChanged,
+                nameof(SystemUser),
+                systemUserId,
+                $"RoleIds={string.Join(',', roleIds)}");
+        }
+
+        _activityLog.Add(ActivityLogActions.SystemUserUpdated, nameof(SystemUser), systemUserId);
 
         await _context.SaveChangesAsync(cancellationToken);
         return new SystemUserSaveResult(SystemUserSaveStatus.Success);
@@ -112,6 +127,7 @@ public class SystemUserService : ISystemUserService
         if (user is null) return DeleteResult.NotFound;
 
         user.IsActive = false;
+        _activityLog.Add(ActivityLogActions.SystemUserDeactivated, nameof(SystemUser), systemUserId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }
@@ -128,7 +144,15 @@ public class SystemUserService : ISystemUserService
                     user => user.TokenVersion + 1),
                 cancellationToken);
 
-        return updatedUserCount == 1;
+        if (updatedUserCount != 1)
+            return false;
+
+        _activityLog.Add(
+            ActivityLogActions.SystemUserSessionsTerminated,
+            nameof(SystemUser),
+            systemUserId);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
     }
 
     private IQueryable<SystemUserResponse> Query()
