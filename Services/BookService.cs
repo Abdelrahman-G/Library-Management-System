@@ -56,6 +56,29 @@ public class BookService : IBookService
             .ToListAsync(cancellationToken);
     }
 
+    public async Task<IReadOnlyList<BookResponse>> GetByStatusAsync(
+        BookAvailabilityStatus status,
+        CancellationToken cancellationToken = default)
+    {
+        var query = _context.Books.AsNoTracking();
+
+        query = status switch
+        {
+            BookAvailabilityStatus.In => query.Where(book =>
+                book.Copies.Any(copy => copy.Status == BookCopyStatus.Available)),
+
+            BookAvailabilityStatus.Out => query.Where(book =>
+                book.Copies.Any() &&
+                book.Copies.All(copy => copy.Status == BookCopyStatus.Borrowed)),
+
+            _ => throw new ArgumentOutOfRangeException(nameof(status))
+        };
+
+        return await Query(query)
+            .OrderBy(book => book.Title)
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task<BookResponse?> GetByIdAsync(int bookId, CancellationToken cancellationToken = default)
     {
         return await Query().FirstOrDefaultAsync(book => book.BookId == bookId, cancellationToken);

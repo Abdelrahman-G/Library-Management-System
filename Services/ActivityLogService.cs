@@ -42,19 +42,12 @@ public class ActivityLogService : IActivityLogService
 
     public async Task<IReadOnlyList<ActivityLogResponse>> GetAllAsync(
         int? systemUserId,
-        string? action,
         CancellationToken cancellationToken = default)
     {
         var query = _context.UserActivityLogs.AsNoTracking();
 
         if (systemUserId.HasValue)
             query = query.Where(log => log.SystemUserId == systemUserId.Value);
-
-        if (!string.IsNullOrWhiteSpace(action))
-        {
-            var normalizedAction = action.Trim();
-            query = query.Where(log => log.Action == normalizedAction);
-        }
 
         return await query
             .OrderByDescending(log => log.CreatedAt)
