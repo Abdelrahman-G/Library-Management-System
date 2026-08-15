@@ -99,7 +99,9 @@ builder.Services
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddScoped<IActivityLogService, ActivityLogService>();
 builder.Services.AddScoped<IPublisherService, PublisherService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();

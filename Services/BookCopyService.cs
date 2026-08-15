@@ -10,8 +10,13 @@ namespace Library_Management_System.Services;
 public class BookCopyService : IBookCopyService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public BookCopyService(LibraryDbContext context) => _context = context;
+    public BookCopyService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<BookCopyResponse>> GetAllAsync(CancellationToken cancellationToken = default)
     {
@@ -35,6 +40,8 @@ public class BookCopyService : IBookCopyService
         };
         _context.BookCopies.Add(copy);
         await _context.SaveChangesAsync(cancellationToken);
+        _activityLog.Add(ActivityLogActions.BookCopyCreated, nameof(BookCopy), copy.BookCopyId);
+        await _context.SaveChangesAsync(cancellationToken);
         return await GetByIdAsync(copy.BookCopyId, cancellationToken);
     }
 
@@ -48,6 +55,7 @@ public class BookCopyService : IBookCopyService
         copy.BookId = request.BookId;
         copy.Status = request.Status;
         copy.Location = request.Location?.Trim();
+        _activityLog.Add(ActivityLogActions.BookCopyUpdated, nameof(BookCopy), bookCopyId);
         await _context.SaveChangesAsync(cancellationToken);
         return UpdateResult.Success;
     }
@@ -60,6 +68,7 @@ public class BookCopyService : IBookCopyService
             return DeleteResult.HasDependencies;
 
         _context.BookCopies.Remove(copy);
+        _activityLog.Add(ActivityLogActions.BookCopyDeleted, nameof(BookCopy), bookCopyId);
         await _context.SaveChangesAsync(cancellationToken);
         return DeleteResult.Success;
     }

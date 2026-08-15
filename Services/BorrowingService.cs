@@ -11,8 +11,13 @@ namespace Library_Management_System.Services;
 public class BorrowingService : IBorrowingService
 {
     private readonly LibraryDbContext _context;
+    private readonly IActivityLogService _activityLog;
 
-    public BorrowingService(LibraryDbContext context) => _context = context;
+    public BorrowingService(LibraryDbContext context, IActivityLogService activityLog)
+    {
+        _context = context;
+        _activityLog = activityLog;
+    }
 
     public async Task<IReadOnlyList<BorrowingTransactionResponse>> GetAllAsync(
         CancellationToken cancellationToken = default)
@@ -104,6 +109,14 @@ public class BorrowingService : IBorrowingService
 
         _context.BorrowingTransactions.Add(borrowingTransaction);
         await _context.SaveChangesAsync(cancellationToken);
+
+        _activityLog.Add(
+            ActivityLogActions.BorrowingCheckedOut,
+            nameof(BorrowingTransaction),
+            borrowingTransaction.TransactionId,
+            $"MemberId={request.MemberId}; BookCopyId={request.BookCopyId}",
+            issuedByUserId);
+        await _context.SaveChangesAsync(cancellationToken);
         await databaseTransaction.CommitAsync(cancellationToken);
 
         var response = await GetByIdAsync(
@@ -168,6 +181,13 @@ public class BorrowingService : IBorrowingService
             throw new InvalidOperationException(
                 "The borrowed book copy could not be updated.");
 
+        _activityLog.Add(
+            ActivityLogActions.BorrowingReturned,
+            nameof(BorrowingTransaction),
+            transactionId,
+            $"BookCopyId={transactionData.BookCopyId}",
+            receivedByUserId);
+        await _context.SaveChangesAsync(cancellationToken);
         await databaseTransaction.CommitAsync(cancellationToken);
 
         var response = await GetByIdAsync(transactionId, cancellationToken);
