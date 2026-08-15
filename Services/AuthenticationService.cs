@@ -62,4 +62,19 @@ public class AuthenticationService : IAuthenticationService
             ExpiresAtUtc = tokenResult.ExpiresAtUtc
         };
     }
+
+    public async Task<bool> LogoutAsync(
+        int systemUserId,
+        CancellationToken cancellationToken = default)
+    {
+        var updatedUserCount = await _context.SystemUsers
+            .Where(user => user.SystemUserId == systemUserId && user.IsActive)
+            .ExecuteUpdateAsync(
+                setters => setters.SetProperty(
+                    user => user.TokenVersion,
+                    user => user.TokenVersion + 1),
+                cancellationToken);
+
+        return updatedUserCount == 1;
+    }
 }

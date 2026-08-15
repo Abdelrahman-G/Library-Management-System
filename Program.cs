@@ -68,6 +68,34 @@ builder.Services
             NameClaimType = ClaimTypes.Name,
             RoleClaimType = ClaimTypes.Role
         };
+
+        options.Events = new JwtBearerEvents
+        {
+            OnTokenValidated = async context =>
+            {
+                var userIdValue = context.Principal?.FindFirstValue(ClaimTypes.NameIdentifier);
+                var tokenVersionValue = context.Principal?.FindFirstValue("token_version");
+
+                if (!int.TryParse(userIdValue, out var systemUserId) ||
+                    !int.TryParse(tokenVersionValue, out var tokenVersion))
+                {
+                    context.Fail("The access token is missing required claims.");
+                    return;
+                }
+
+                var dbContext = context.HttpContext.RequestServices
+                    .GetRequiredService<LibraryDbContext>();
+
+                var currentTokenVersion = await dbContext.SystemUsers
+                    .AsNoTracking()
+                    .Where(user => user.SystemUserId == systemUserId && user.IsActive)
+                    .Select(user => (int?)user.TokenVersion)
+                    .FirstOrDefaultAsync(context.HttpContext.RequestAborted);
+
+                if (!currentTokenVersion.HasValue || currentTokenVersion.Value != tokenVersion)
+                    context.Fail("The access token has been invalidated.");
+            }
+        };
     });
 
 builder.Services.AddAuthorization();
