@@ -111,7 +111,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+                      "raw": "{\n  \"password\": \"admin\",\n  \"username\": \"admin\"\n}",
                       "options": {
                         "raw": {
                           "headerFamily": "json",
@@ -167,7 +167,7 @@
                         ],
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+                          "raw": "{\n  \"password\": \"admin\",\n  \"username\": \"admin\"\n}",
                           "options": {
                             "raw": {
                               "headerFamily": "json",

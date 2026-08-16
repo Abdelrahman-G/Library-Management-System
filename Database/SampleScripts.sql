@@ -1,6 +1,44 @@
 USE LibraryManagementDb;
 GO
 
+-- Reviewer login: admin / admin
+
+IF NOT EXISTS (SELECT 1 FROM Roles WHERE RoleName = 'Administrator')
+    INSERT INTO Roles (RoleName) VALUES ('Administrator');
+
+IF NOT EXISTS (SELECT 1 FROM Roles WHERE RoleName = 'Librarian')
+    INSERT INTO Roles (RoleName) VALUES ('Librarian');
+
+IF NOT EXISTS (SELECT 1 FROM Roles WHERE RoleName = 'Staff')
+    INSERT INTO Roles (RoleName) VALUES ('Staff');
+
+IF NOT EXISTS (SELECT 1 FROM SystemUsers WHERE Username = 'admin')
+BEGIN
+    INSERT INTO SystemUsers
+        (Username, Email, PasswordHash, IsActive, CreatedAt, TokenVersion)
+    VALUES
+        ('admin', 'admin@library.test',
+         'AQAAAAIAAYagAAAAEVJldmlld2VyQWRtaW5TYWx059Q/oltkuOjtINJ44dTIQfG1Lp+1fmyTPtMoSAHw2E4=',
+         1, SYSUTCDATETIME(), 0);
+END;
+
+IF NOT EXISTS
+(
+    SELECT 1
+    FROM SystemUserRoles
+    JOIN SystemUsers ON SystemUserRoles.SystemUserId = SystemUsers.SystemUserId
+    JOIN Roles ON SystemUserRoles.RoleId = Roles.RoleId
+    WHERE SystemUsers.Username = 'admin'
+      AND Roles.RoleName = 'Administrator'
+)
+BEGIN
+    INSERT INTO SystemUserRoles (SystemUserId, RoleId)
+    SELECT SystemUsers.SystemUserId, Roles.RoleId
+    FROM SystemUsers CROSS JOIN Roles
+    WHERE SystemUsers.Username = 'admin'
+      AND Roles.RoleName = 'Administrator';
+END;
+
 -- Sample data
 
 INSERT INTO Publishers (PublisherName)

@@ -20,3 +20,19 @@ Books and physical copies are stored separately. A book contains shared metadata
 Books can have multiple authors and categories through the `BookAuthor` and `BookCategory` junction tables. Categories support parent-child relationships through `ParentCategoryId`, and each book belongs to one publisher.
 
 Members and system users are separate because members borrow books while system users operate the application. System users receive roles through the `SystemUserRole` junction table. Passwords are hashed, and JWT token versions allow logout, role changes, and session termination to invalidate older tokens.
+
+## JWT key
+
+Run these commands from the project directory:
+
+```powershell
+$bytes = New-Object byte[] 32
+$rng = [Security.Cryptography.RandomNumberGenerator]::Create()
+$rng.GetBytes($bytes)
+$key = [Convert]::ToBase64String($bytes)
+dotnet user-secrets set "Jwt:Key" $key
+```
+
+## Sample login
+
+After running `Database/SampleScripts.sql`, log in with username `admin` and password `admin`.
