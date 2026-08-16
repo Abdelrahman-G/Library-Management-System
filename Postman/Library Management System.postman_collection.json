@@ -1,0 +1,4374 @@
+{
+  "info": {
+    "_postman_id": "956e381f-881f-4d0c-8882-5806adba15f7",
+    "name": "Library Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31559696",
+    "_collection_link": "https://go.postman.co/collection/31559696-956e381f-881f-4d0c-8882-5806adba15f7?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "activity-logs",
+          "item": [
+            {
+              "name": "/api/activity-logs",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/activity-logs?systemUserId=2944",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "activity-logs"
+                  ],
+                  "query": [
+                    {
+                      "key": "systemUserId",
+                      "value": "2944"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/activity-logs?systemUserId=2944",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "activity-logs"
+                      ],
+                      "query": [
+                        {
+                          "key": "systemUserId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"activityLogId\": 7195,\n    \"systemUserId\": 3256,\n    \"username\": \"string\",\n    \"action\": \"string\",\n    \"createdAt\": \"1963-04-29T00:01:59.536Z\",\n    \"targetEntityType\": \"string\",\n    \"targetEntityId\": 3593,\n    \"notes\": \"string\"\n  },\n  {\n    \"activityLogId\": 4075,\n    \"systemUserId\": 3977,\n    \"username\": \"string\",\n    \"action\": \"string\",\n    \"createdAt\": \"1952-08-29T22:26:24.380Z\",\n    \"targetEntityType\": \"string\",\n    \"targetEntityId\": 9767,\n    \"notes\": \"string\"\n  }\n]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "login",
+              "item": [
+                {
+                  "name": "/api/auth/login",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/auth/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"password\": \"string\",\n  \"username\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "login"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"systemUserId\": 1067,\n  \"username\": \"string\",\n  \"email\": \"string\",\n  \"roles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"accessToken\": \"string\",\n  \"expiresAtUtc\": \"2026-06-18T22:03:17.545Z\"\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "me",
+              "item": [
+                {
+                  "name": "/api/auth/me",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/auth/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "me"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/me",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "me"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"systemUserId\": 8313,\n  \"username\": \"string\",\n  \"email\": \"string\",\n  \"roles\": [\n    \"string\",\n    \"string\"\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "logout",
+              "item": [
+                {
+                  "name": "/api/auth/logout",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/auth/logout",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "logout"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/logout",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "logout"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Authors",
+          "item": [
+            {
+              "name": "{authorId}",
+              "item": [
+                {
+                  "name": "/api/Authors/:authorId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Authors/:authorId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Authors",
+                        ":authorId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "authorId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Authors/:authorId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Authors",
+                            ":authorId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "authorId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"authorId\": 5472,\n  \"authorName\": \"string\",\n  \"bookCount\": 7298\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Authors/:authorId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"authorName\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Authors/:authorId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Authors",
+                        ":authorId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "authorId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"authorName\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Authors/:authorId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Authors",
+                            ":authorId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "authorId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Authors/:authorId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Authors/:authorId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Authors",
+                        ":authorId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "authorId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Authors/:authorId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Authors",
+                            ":authorId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "authorId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Authors",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Authors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Authors"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Authors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Authors"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"authorId\": 3178,\n    \"authorName\": \"string\",\n    \"bookCount\": 5045\n  },\n  {\n    \"authorId\": 2466,\n    \"authorName\": \"string\",\n    \"bookCount\": 911\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Authors",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorName\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Authors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Authors"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"authorName\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Authors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Authors"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"authorId\": 5472,\n  \"authorName\": \"string\",\n  \"bookCount\": 7298\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "BookCopies",
+          "item": [
+            {
+              "name": "{bookCopyId}",
+              "item": [
+                {
+                  "name": "/api/BookCopies/:bookCopyId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/BookCopies/:bookCopyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "BookCopies",
+                        ":bookCopyId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bookCopyId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/BookCopies/:bookCopyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "BookCopies",
+                            ":bookCopyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookCopyId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"bookCopyId\": 2791,\n  \"bookId\": 411,\n  \"bookTitle\": \"string\",\n  \"status\": 1,\n  \"location\": \"string\",\n  \"borrowingCount\": 5586\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/BookCopies/:bookCopyId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"bookId\": 2129897310,\n  \"status\": 0,\n  \"location\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/BookCopies/:bookCopyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "BookCopies",
+                        ":bookCopyId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bookCopyId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"bookId\": 2129897310,\n  \"status\": 0,\n  \"location\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/BookCopies/:bookCopyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "BookCopies",
+                            ":bookCopyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookCopyId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/BookCopies/:bookCopyId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/BookCopies/:bookCopyId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "BookCopies",
+                        ":bookCopyId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bookCopyId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/BookCopies/:bookCopyId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "BookCopies",
+                            ":bookCopyId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookCopyId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/BookCopies",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/BookCopies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "BookCopies"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/BookCopies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "BookCopies"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"bookCopyId\": 5638,\n    \"bookId\": 831,\n    \"bookTitle\": \"string\",\n    \"status\": 1,\n    \"location\": \"string\",\n    \"borrowingCount\": 5784\n  },\n  {\n    \"bookCopyId\": 2510,\n    \"bookId\": 6670,\n    \"bookTitle\": \"string\",\n    \"status\": 0,\n    \"location\": \"string\",\n    \"borrowingCount\": 5815\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/BookCopies",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bookId\": 2129897310,\n  \"status\": 0,\n  \"location\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/BookCopies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "BookCopies"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"bookId\": 2129897310,\n  \"status\": 0,\n  \"location\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/BookCopies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "BookCopies"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"bookCopyId\": 2791,\n  \"bookId\": 411,\n  \"bookTitle\": \"string\",\n  \"status\": 1,\n  \"location\": \"string\",\n  \"borrowingCount\": 5586\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Books",
+          "item": [
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "/api/Books/search",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Books/search?Name=string&Author=string&Category=string",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Books",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "key": "Name",
+                          "value": "string"
+                        },
+                        {
+                          "key": "Author",
+                          "value": "string"
+                        },
+                        {
+                          "key": "Category",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/search?Name=string&Author=string&Category=string",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "key": "Name",
+                              "value": "string"
+                            },
+                            {
+                              "key": "Author",
+                              "value": "string"
+                            },
+                            {
+                              "key": "Category",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"bookId\": 1692,\n    \"title\": \"string\",\n    \"isbn\": \"string\",\n    \"summary\": \"string\",\n    \"coverImageUrl\": \"string\",\n    \"edition\": 689,\n    \"publicationYear\": 9267,\n    \"language\": \"string\",\n    \"publisherId\": 3568,\n    \"publisherName\": \"string\",\n    \"authors\": [\n      {\n        \"authorId\": 8444,\n        \"authorName\": \"string\",\n        \"authorOrder\": 9259\n      },\n      {\n        \"authorId\": 2272,\n        \"authorName\": \"string\",\n        \"authorOrder\": 5276\n      }\n    ],\n    \"categories\": [\n      {\n        \"categoryId\": 9060,\n        \"categoryName\": \"string\"\n      },\n      {\n        \"categoryId\": 3582,\n        \"categoryName\": \"string\"\n      }\n    ],\n    \"copyCount\": 6629,\n    \"availableCopyCount\": 4503\n  },\n  {\n    \"bookId\": 6728,\n    \"title\": \"string\",\n    \"isbn\": \"string\",\n    \"summary\": \"string\",\n    \"coverImageUrl\": \"string\",\n    \"edition\": 4624,\n    \"publicationYear\": 7503,\n    \"language\": \"string\",\n    \"publisherId\": 3983,\n    \"publisherName\": \"string\",\n    \"authors\": [\n      {\n        \"authorId\": 804,\n        \"authorName\": \"string\",\n        \"authorOrder\": 3992\n      },\n      {\n        \"authorId\": 4070,\n        \"authorName\": \"string\",\n        \"authorOrder\": 2371\n      }\n    ],\n    \"categories\": [\n      {\n        \"categoryId\": 5993,\n        \"categoryName\": \"string\"\n      },\n      {\n        \"categoryId\": 5696,\n        \"categoryName\": \"string\"\n      }\n    ],\n    \"copyCount\": 6805,\n    \"availableCopyCount\": 2623\n  }\n]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "by-status",
+              "item": [
+                {
+                  "name": "{status}",
+                  "item": [
+                    {
+                      "name": "/api/Books/by-status/:status",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/by-status/:status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            "by-status",
+                            ":status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "status",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/Books/by-status/:status",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "Books",
+                                "by-status",
+                                ":status"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "status",
+                                  "value": "0"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"bookId\": 1692,\n    \"title\": \"string\",\n    \"isbn\": \"string\",\n    \"summary\": \"string\",\n    \"coverImageUrl\": \"string\",\n    \"edition\": 689,\n    \"publicationYear\": 9267,\n    \"language\": \"string\",\n    \"publisherId\": 3568,\n    \"publisherName\": \"string\",\n    \"authors\": [\n      {\n        \"authorId\": 8444,\n        \"authorName\": \"string\",\n        \"authorOrder\": 9259\n      },\n      {\n        \"authorId\": 2272,\n        \"authorName\": \"string\",\n        \"authorOrder\": 5276\n      }\n    ],\n    \"categories\": [\n      {\n        \"categoryId\": 9060,\n        \"categoryName\": \"string\"\n      },\n      {\n        \"categoryId\": 3582,\n        \"categoryName\": \"string\"\n      }\n    ],\n    \"copyCount\": 6629,\n    \"availableCopyCount\": 4503\n  },\n  {\n    \"bookId\": 6728,\n    \"title\": \"string\",\n    \"isbn\": \"string\",\n    \"summary\": \"string\",\n    \"coverImageUrl\": \"string\",\n    \"edition\": 4624,\n    \"publicationYear\": 7503,\n    \"language\": \"string\",\n    \"publisherId\": 3983,\n    \"publisherName\": \"string\",\n    \"authors\": [\n      {\n        \"authorId\": 804,\n        \"authorName\": \"string\",\n        \"authorOrder\": 3992\n      },\n      {\n        \"authorId\": 4070,\n        \"authorName\": \"string\",\n        \"authorOrder\": 2371\n      }\n    ],\n    \"categories\": [\n      {\n        \"categoryId\": 5993,\n        \"categoryName\": \"string\"\n      },\n      {\n        \"categoryId\": 5696,\n        \"categoryName\": \"string\"\n      }\n    ],\n    \"copyCount\": 6805,\n    \"availableCopyCount\": 2623\n  }\n]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "{bookId}",
+              "item": [
+                {
+                  "name": "availability",
+                  "item": [
+                    {
+                      "name": "/api/Books/:bookId/availability",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/:bookId/availability",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            ":bookId",
+                            "availability"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/Books/:bookId/availability",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "Books",
+                                ":bookId",
+                                "availability"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "bookId",
+                                  "value": "2944"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"bookId\": 1304,\n  \"bookTitle\": \"string\",\n  \"totalCopies\": 6418,\n  \"availableCopies\": 4648\n}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "copies",
+                  "item": [
+                    {
+                      "name": "/api/Books/:bookId/copies",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/:bookId/copies",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            ":bookId",
+                            "copies"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/Books/:bookId/copies",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "Books",
+                                ":bookId",
+                                "copies"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "bookId",
+                                  "value": "2944"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"bookCopyId\": 5638,\n    \"bookId\": 831,\n    \"bookTitle\": \"string\",\n    \"status\": 1,\n    \"location\": \"string\",\n    \"borrowingCount\": 5784\n  },\n  {\n    \"bookCopyId\": 2510,\n    \"bookId\": 6670,\n    \"bookTitle\": \"string\",\n    \"status\": 0,\n    \"location\": \"string\",\n    \"borrowingCount\": 5815\n  }\n]"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Books/:bookId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Books/:bookId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Books",
+                        ":bookId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bookId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/:bookId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            ":bookId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"bookId\": 9478,\n  \"title\": \"string\",\n  \"isbn\": \"string\",\n  \"summary\": \"string\",\n  \"coverImageUrl\": \"string\",\n  \"edition\": 3523,\n  \"publicationYear\": 5502,\n  \"language\": \"string\",\n  \"publisherId\": 2787,\n  \"publisherName\": \"string\",\n  \"authors\": [\n    {\n      \"authorId\": 7463,\n      \"authorName\": \"string\",\n      \"authorOrder\": 9769\n    },\n    {\n      \"authorId\": 3064,\n      \"authorName\": \"string\",\n      \"authorOrder\": 9090\n    }\n  ],\n  \"categories\": [\n    {\n      \"categoryId\": 2531,\n      \"categoryName\": \"string\"\n    },\n    {\n      \"categoryId\": 9812,\n      \"categoryName\": \"string\"\n    }\n  ],\n  \"copyCount\": 881,\n  \"availableCopyCount\": 1174\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Books/:bookId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"isbn\": \"string\",\n  \"language\": \"string\",\n  \"title\": \"string\",\n  \"summary\": \"string\",\n  \"coverImageUrl\": \"string\",\n  \"edition\": 297755325,\n  \"publicationYear\": 2571,\n  \"publisherId\": 1958673175,\n  \"authorIds\": [\n    388\n  ],\n  \"categoryIds\": [\n    9498\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Books/:bookId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Books",
+                        ":bookId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bookId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"isbn\": \"string\",\n  \"language\": \"string\",\n  \"title\": \"string\",\n  \"summary\": \"string\",\n  \"coverImageUrl\": \"string\",\n  \"edition\": 297755325,\n  \"publicationYear\": 2571,\n  \"publisherId\": 1958673175,\n  \"authorIds\": [\n    388\n  ],\n  \"categoryIds\": [\n    9498\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/:bookId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            ":bookId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Books/:bookId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Books/:bookId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Books",
+                        ":bookId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "bookId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Books/:bookId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Books",
+                            ":bookId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "bookId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Books",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Books"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Books",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Books"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"bookId\": 1692,\n    \"title\": \"string\",\n    \"isbn\": \"string\",\n    \"summary\": \"string\",\n    \"coverImageUrl\": \"string\",\n    \"edition\": 689,\n    \"publicationYear\": 9267,\n    \"language\": \"string\",\n    \"publisherId\": 3568,\n    \"publisherName\": \"string\",\n    \"authors\": [\n      {\n        \"authorId\": 8444,\n        \"authorName\": \"string\",\n        \"authorOrder\": 9259\n      },\n      {\n        \"authorId\": 2272,\n        \"authorName\": \"string\",\n        \"authorOrder\": 5276\n      }\n    ],\n    \"categories\": [\n      {\n        \"categoryId\": 9060,\n        \"categoryName\": \"string\"\n      },\n      {\n        \"categoryId\": 3582,\n        \"categoryName\": \"string\"\n      }\n    ],\n    \"copyCount\": 6629,\n    \"availableCopyCount\": 4503\n  },\n  {\n    \"bookId\": 6728,\n    \"title\": \"string\",\n    \"isbn\": \"string\",\n    \"summary\": \"string\",\n    \"coverImageUrl\": \"string\",\n    \"edition\": 4624,\n    \"publicationYear\": 7503,\n    \"language\": \"string\",\n    \"publisherId\": 3983,\n    \"publisherName\": \"string\",\n    \"authors\": [\n      {\n        \"authorId\": 804,\n        \"authorName\": \"string\",\n        \"authorOrder\": 3992\n      },\n      {\n        \"authorId\": 4070,\n        \"authorName\": \"string\",\n        \"authorOrder\": 2371\n      }\n    ],\n    \"categories\": [\n      {\n        \"categoryId\": 5993,\n        \"categoryName\": \"string\"\n      },\n      {\n        \"categoryId\": 5696,\n        \"categoryName\": \"string\"\n      }\n    ],\n    \"copyCount\": 6805,\n    \"availableCopyCount\": 2623\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Books",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isbn\": \"string\",\n  \"language\": \"string\",\n  \"title\": \"string\",\n  \"summary\": \"string\",\n  \"coverImageUrl\": \"string\",\n  \"edition\": 297755325,\n  \"publicationYear\": 2571,\n  \"publisherId\": 1958673175,\n  \"authorIds\": [\n    388\n  ],\n  \"categoryIds\": [\n    9498\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Books",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Books"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"isbn\": \"string\",\n  \"language\": \"string\",\n  \"title\": \"string\",\n  \"summary\": \"string\",\n  \"coverImageUrl\": \"string\",\n  \"edition\": 297755325,\n  \"publicationYear\": 2571,\n  \"publisherId\": 1958673175,\n  \"authorIds\": [\n    388\n  ],\n  \"categoryIds\": [\n    9498\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Books",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Books"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"bookId\": 9478,\n  \"title\": \"string\",\n  \"isbn\": \"string\",\n  \"summary\": \"string\",\n  \"coverImageUrl\": \"string\",\n  \"edition\": 3523,\n  \"publicationYear\": 5502,\n  \"language\": \"string\",\n  \"publisherId\": 2787,\n  \"publisherName\": \"string\",\n  \"authors\": [\n    {\n      \"authorId\": 7463,\n      \"authorName\": \"string\",\n      \"authorOrder\": 9769\n    },\n    {\n      \"authorId\": 3064,\n      \"authorName\": \"string\",\n      \"authorOrder\": 9090\n    }\n  ],\n  \"categories\": [\n    {\n      \"categoryId\": 2531,\n      \"categoryName\": \"string\"\n    },\n    {\n      \"categoryId\": 9812,\n      \"categoryName\": \"string\"\n    }\n  ],\n  \"copyCount\": 881,\n  \"availableCopyCount\": 1174\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "borrowings",
+          "item": [
+            {
+              "name": "{transactionId}",
+              "item": [
+                {
+                  "name": "return",
+                  "item": [
+                    {
+                      "name": "/api/borrowings/:transactionId/return",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/borrowings/:transactionId/return",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "borrowings",
+                            ":transactionId",
+                            "return"
+                          ],
+                          "variable": [
+                            {
+                              "key": "transactionId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/borrowings/:transactionId/return",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "borrowings",
+                                ":transactionId",
+                                "return"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "transactionId",
+                                  "value": "2944"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"transactionId\": 2835,\n  \"memberId\": 8187,\n  \"membershipNumber\": \"string\",\n  \"memberName\": \"string\",\n  \"bookCopyId\": 7393,\n  \"bookId\": 6008,\n  \"bookTitle\": \"string\",\n  \"issuedByUserId\": 2234,\n  \"issuedByUsername\": \"string\",\n  \"receivedByUserId\": 9205,\n  \"receivedByUsername\": \"string\",\n  \"borrowedAt\": \"1996-10-25T06:05:10.508Z\",\n  \"dueAt\": \"2001-11-24T22:28:54.875Z\",\n  \"returnedAt\": \"1950-02-20T23:04:17.497Z\",\n  \"isReturned\": true,\n  \"isOverdue\": true\n}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/borrowings/:transactionId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/borrowings/:transactionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "borrowings",
+                        ":transactionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "transactionId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/borrowings/:transactionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "borrowings",
+                            ":transactionId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "transactionId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"transactionId\": 2835,\n  \"memberId\": 8187,\n  \"membershipNumber\": \"string\",\n  \"memberName\": \"string\",\n  \"bookCopyId\": 7393,\n  \"bookId\": 6008,\n  \"bookTitle\": \"string\",\n  \"issuedByUserId\": 2234,\n  \"issuedByUsername\": \"string\",\n  \"receivedByUserId\": 9205,\n  \"receivedByUsername\": \"string\",\n  \"borrowedAt\": \"1996-10-25T06:05:10.508Z\",\n  \"dueAt\": \"2001-11-24T22:28:54.875Z\",\n  \"returnedAt\": \"1950-02-20T23:04:17.497Z\",\n  \"isReturned\": true,\n  \"isOverdue\": true\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "active",
+              "item": [
+                {
+                  "name": "/api/borrowings/active",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/borrowings/active",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "borrowings",
+                        "active"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/borrowings/active",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "borrowings",
+                            "active"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"transactionId\": 2037,\n    \"memberId\": 8964,\n    \"membershipNumber\": \"string\",\n    \"memberName\": \"string\",\n    \"bookCopyId\": 8673,\n    \"bookId\": 2377,\n    \"bookTitle\": \"string\",\n    \"issuedByUserId\": 4124,\n    \"issuedByUsername\": \"string\",\n    \"receivedByUserId\": 2064,\n    \"receivedByUsername\": \"string\",\n    \"borrowedAt\": \"1987-06-09T13:24:22.656Z\",\n    \"dueAt\": \"2004-09-13T21:03:26.412Z\",\n    \"returnedAt\": \"2005-07-29T14:53:44.714Z\",\n    \"isReturned\": true,\n    \"isOverdue\": false\n  },\n  {\n    \"transactionId\": 3106,\n    \"memberId\": 7710,\n    \"membershipNumber\": \"string\",\n    \"memberName\": \"string\",\n    \"bookCopyId\": 4880,\n    \"bookId\": 5272,\n    \"bookTitle\": \"string\",\n    \"issuedByUserId\": 841,\n    \"issuedByUsername\": \"string\",\n    \"receivedByUserId\": 4575,\n    \"receivedByUsername\": \"string\",\n    \"borrowedAt\": \"2004-10-10T22:37:33.053Z\",\n    \"dueAt\": \"1990-07-25T20:49:04.599Z\",\n    \"returnedAt\": \"2017-11-18T13:16:01.013Z\",\n    \"isReturned\": false,\n    \"isOverdue\": true\n  }\n]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "member",
+              "item": [
+                {
+                  "name": "{memberId}",
+                  "item": [
+                    {
+                      "name": "/api/borrowings/member/:memberId",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/borrowings/member/:memberId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "borrowings",
+                            "member",
+                            ":memberId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/borrowings/member/:memberId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "borrowings",
+                                "member",
+                                ":memberId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "memberId",
+                                  "value": "2944"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[\n  {\n    \"transactionId\": 2037,\n    \"memberId\": 8964,\n    \"membershipNumber\": \"string\",\n    \"memberName\": \"string\",\n    \"bookCopyId\": 8673,\n    \"bookId\": 2377,\n    \"bookTitle\": \"string\",\n    \"issuedByUserId\": 4124,\n    \"issuedByUsername\": \"string\",\n    \"receivedByUserId\": 2064,\n    \"receivedByUsername\": \"string\",\n    \"borrowedAt\": \"1987-06-09T13:24:22.656Z\",\n    \"dueAt\": \"2004-09-13T21:03:26.412Z\",\n    \"returnedAt\": \"2005-07-29T14:53:44.714Z\",\n    \"isReturned\": true,\n    \"isOverdue\": false\n  },\n  {\n    \"transactionId\": 3106,\n    \"memberId\": 7710,\n    \"membershipNumber\": \"string\",\n    \"memberName\": \"string\",\n    \"bookCopyId\": 4880,\n    \"bookId\": 5272,\n    \"bookTitle\": \"string\",\n    \"issuedByUserId\": 841,\n    \"issuedByUsername\": \"string\",\n    \"receivedByUserId\": 4575,\n    \"receivedByUsername\": \"string\",\n    \"borrowedAt\": \"2004-10-10T22:37:33.053Z\",\n    \"dueAt\": \"1990-07-25T20:49:04.599Z\",\n    \"returnedAt\": \"2017-11-18T13:16:01.013Z\",\n    \"isReturned\": false,\n    \"isOverdue\": true\n  }\n]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "checkout",
+              "item": [
+                {
+                  "name": "/api/borrowings/checkout",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"memberId\": 577922374,\n  \"bookCopyId\": 1100379132,\n  \"dueAt\": \"2016-03-01T16:00:05.521Z\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/borrowings/checkout",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "borrowings",
+                        "checkout"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"memberId\": 577922374,\n  \"bookCopyId\": 1100379132,\n  \"dueAt\": \"2016-03-01T16:00:05.521Z\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/borrowings/checkout",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "borrowings",
+                            "checkout"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"transactionId\": 2835,\n  \"memberId\": 8187,\n  \"membershipNumber\": \"string\",\n  \"memberName\": \"string\",\n  \"bookCopyId\": 7393,\n  \"bookId\": 6008,\n  \"bookTitle\": \"string\",\n  \"issuedByUserId\": 2234,\n  \"issuedByUsername\": \"string\",\n  \"receivedByUserId\": 9205,\n  \"receivedByUsername\": \"string\",\n  \"borrowedAt\": \"1996-10-25T06:05:10.508Z\",\n  \"dueAt\": \"2001-11-24T22:28:54.875Z\",\n  \"returnedAt\": \"1950-02-20T23:04:17.497Z\",\n  \"isReturned\": true,\n  \"isOverdue\": true\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/borrowings",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/borrowings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "borrowings"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/borrowings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "borrowings"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"transactionId\": 2037,\n    \"memberId\": 8964,\n    \"membershipNumber\": \"string\",\n    \"memberName\": \"string\",\n    \"bookCopyId\": 8673,\n    \"bookId\": 2377,\n    \"bookTitle\": \"string\",\n    \"issuedByUserId\": 4124,\n    \"issuedByUsername\": \"string\",\n    \"receivedByUserId\": 2064,\n    \"receivedByUsername\": \"string\",\n    \"borrowedAt\": \"1987-06-09T13:24:22.656Z\",\n    \"dueAt\": \"2004-09-13T21:03:26.412Z\",\n    \"returnedAt\": \"2005-07-29T14:53:44.714Z\",\n    \"isReturned\": true,\n    \"isOverdue\": false\n  },\n  {\n    \"transactionId\": 3106,\n    \"memberId\": 7710,\n    \"membershipNumber\": \"string\",\n    \"memberName\": \"string\",\n    \"bookCopyId\": 4880,\n    \"bookId\": 5272,\n    \"bookTitle\": \"string\",\n    \"issuedByUserId\": 841,\n    \"issuedByUsername\": \"string\",\n    \"receivedByUserId\": 4575,\n    \"receivedByUsername\": \"string\",\n    \"borrowedAt\": \"2004-10-10T22:37:33.053Z\",\n    \"dueAt\": \"1990-07-25T20:49:04.599Z\",\n    \"returnedAt\": \"2017-11-18T13:16:01.013Z\",\n    \"isReturned\": false,\n    \"isOverdue\": true\n  }\n]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Categories",
+          "item": [
+            {
+              "name": "{categoryId}",
+              "item": [
+                {
+                  "name": "/api/Categories/:categoryId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Categories/:categoryId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Categories",
+                        ":categoryId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "categoryId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Categories/:categoryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Categories",
+                            ":categoryId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "categoryId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"categoryId\": 3035,\n  \"categoryName\": \"string\",\n  \"parentCategoryId\": 7538,\n  \"parentCategoryName\": \"string\",\n  \"childCategoryCount\": 7234,\n  \"bookCount\": 8773\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Categories/:categoryId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"categoryName\": \"string\",\n  \"parentCategoryId\": 8777\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Categories/:categoryId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Categories",
+                        ":categoryId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "categoryId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"categoryName\": \"string\",\n  \"parentCategoryId\": 8777\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Categories/:categoryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Categories",
+                            ":categoryId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "categoryId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Categories/:categoryId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Categories/:categoryId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Categories",
+                        ":categoryId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "categoryId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Categories/:categoryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Categories",
+                            ":categoryId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "categoryId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Categories",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Categories"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Categories"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"categoryId\": 7540,\n    \"categoryName\": \"string\",\n    \"parentCategoryId\": 1538,\n    \"parentCategoryName\": \"string\",\n    \"childCategoryCount\": 3843,\n    \"bookCount\": 6752\n  },\n  {\n    \"categoryId\": 6396,\n    \"categoryName\": \"string\",\n    \"parentCategoryId\": 4519,\n    \"parentCategoryName\": \"string\",\n    \"childCategoryCount\": 9470,\n    \"bookCount\": 6379\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Categories",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"categoryName\": \"string\",\n  \"parentCategoryId\": 8777\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Categories"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"categoryName\": \"string\",\n  \"parentCategoryId\": 8777\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Categories"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"categoryId\": 3035,\n  \"categoryName\": \"string\",\n  \"parentCategoryId\": 7538,\n  \"parentCategoryName\": \"string\",\n  \"childCategoryCount\": 7234,\n  \"bookCount\": 8773\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Members",
+          "item": [
+            {
+              "name": "{memberId}",
+              "item": [
+                {
+                  "name": "/api/Members/:memberId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Members/:memberId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Members",
+                        ":memberId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "memberId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Members/:memberId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Members",
+                            ":memberId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"memberId\": 9375,\n  \"membershipNumber\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"dateOfBirth\": \"1976-12-07T10:18:42.979Z\",\n  \"address\": \"string\",\n  \"joinDate\": \"1987-05-18T19:58:13.055Z\",\n  \"borrowingCount\": 8031\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Members/:memberId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"address\": \"string\",\n  \"email\": \"6zzFJuTXbd0KvuB@LYEc.yuao\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"membershipNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"dateOfBirth\": \"2014-11-05T17:45:51.009Z\",\n  \"joinDate\": \"2001-12-05T10:52:15.302Z\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Members/:memberId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Members",
+                        ":memberId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "memberId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"string\",\n  \"email\": \"6zzFJuTXbd0KvuB@LYEc.yuao\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"membershipNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"dateOfBirth\": \"2014-11-05T17:45:51.009Z\",\n  \"joinDate\": \"2001-12-05T10:52:15.302Z\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Members/:memberId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Members",
+                            ":memberId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Members/:memberId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Members/:memberId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Members",
+                        ":memberId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "memberId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Members/:memberId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Members",
+                            ":memberId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "memberId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Members",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Members",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Members"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Members",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Members"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"memberId\": 8020,\n    \"membershipNumber\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"dateOfBirth\": \"2013-12-14T02:43:59.287Z\",\n    \"address\": \"string\",\n    \"joinDate\": \"1958-09-21T04:18:08.140Z\",\n    \"borrowingCount\": 7960\n  },\n  {\n    \"memberId\": 1679,\n    \"membershipNumber\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"dateOfBirth\": \"2010-04-12T10:21:50.916Z\",\n    \"address\": \"string\",\n    \"joinDate\": \"2006-05-07T08:40:05.573Z\",\n    \"borrowingCount\": 1219\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Members",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"string\",\n  \"email\": \"6zzFJuTXbd0KvuB@LYEc.yuao\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"membershipNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"dateOfBirth\": \"2014-11-05T17:45:51.009Z\",\n  \"joinDate\": \"2001-12-05T10:52:15.302Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Members",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Members"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"address\": \"string\",\n  \"email\": \"6zzFJuTXbd0KvuB@LYEc.yuao\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"membershipNumber\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"dateOfBirth\": \"2014-11-05T17:45:51.009Z\",\n  \"joinDate\": \"2001-12-05T10:52:15.302Z\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Members",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Members"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"memberId\": 9375,\n  \"membershipNumber\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"dateOfBirth\": \"1976-12-07T10:18:42.979Z\",\n  \"address\": \"string\",\n  \"joinDate\": \"1987-05-18T19:58:13.055Z\",\n  \"borrowingCount\": 8031\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Publishers",
+          "item": [
+            {
+              "name": "{publisherId}",
+              "item": [
+                {
+                  "name": "/api/Publishers/:publisherId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Publishers/:publisherId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Publishers",
+                        ":publisherId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "publisherId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Publishers/:publisherId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Publishers",
+                            ":publisherId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publisherId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"publisherId\": 8770,\n  \"publisherName\": \"string\",\n  \"bookCount\": 3724\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Publishers/:publisherId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"publisherName\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Publishers/:publisherId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Publishers",
+                        ":publisherId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "publisherId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"publisherName\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Publishers/:publisherId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Publishers",
+                            ":publisherId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publisherId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Publishers/:publisherId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Publishers/:publisherId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Publishers",
+                        ":publisherId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "publisherId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Publishers/:publisherId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Publishers",
+                            ":publisherId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "publisherId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Publishers",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Publishers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Publishers"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Publishers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Publishers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"publisherId\": 5500,\n    \"publisherName\": \"string\",\n    \"bookCount\": 771\n  },\n  {\n    \"publisherId\": 3359,\n    \"publisherName\": \"string\",\n    \"bookCount\": 1765\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Publishers",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"publisherName\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Publishers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Publishers"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"publisherName\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Publishers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Publishers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"publisherId\": 8770,\n  \"publisherName\": \"string\",\n  \"bookCount\": 3724\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Roles",
+          "item": [
+            {
+              "name": "{roleId}",
+              "item": [
+                {
+                  "name": "/api/Roles/:roleId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Roles/:roleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Roles",
+                        ":roleId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "roleId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Roles/:roleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Roles",
+                            ":roleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "roleId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"roleId\": 8152,\n  \"roleName\": \"string\",\n  \"userCount\": 5076\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Roles/:roleId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"roleName\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Roles/:roleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Roles",
+                        ":roleId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "roleId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"roleName\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Roles/:roleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Roles",
+                            ":roleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "roleId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Roles/:roleId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Roles/:roleId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Roles",
+                        ":roleId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "roleId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Roles/:roleId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Roles",
+                            ":roleId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "roleId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Roles",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Roles"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Roles"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"roleId\": 1873,\n    \"roleName\": \"string\",\n    \"userCount\": 93\n  },\n  {\n    \"roleId\": 6310,\n    \"roleName\": \"string\",\n    \"userCount\": 1728\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Roles",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"roleName\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Roles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Roles"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"roleName\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Roles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Roles"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"roleId\": 8152,\n  \"roleName\": \"string\",\n  \"userCount\": 5076\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SystemUsers",
+          "item": [
+            {
+              "name": "{systemUserId}",
+              "item": [
+                {
+                  "name": "terminate-sessions",
+                  "item": [
+                    {
+                      "name": "/api/SystemUsers/:systemUserId/terminate-sessions",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId/terminate-sessions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "SystemUsers",
+                            ":systemUserId",
+                            "terminate-sessions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "systemUserId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId/terminate-sessions",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "SystemUsers",
+                                ":systemUserId",
+                                "terminate-sessions"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "systemUserId",
+                                  "value": "2944"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "body": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/SystemUsers/:systemUserId",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "SystemUsers",
+                        ":systemUserId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "systemUserId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "SystemUsers",
+                            ":systemUserId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "systemUserId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"systemUserId\": 6961,\n  \"username\": \"string\",\n  \"email\": \"string\",\n  \"isActive\": false,\n  \"createdAt\": \"2017-12-10T13:36:53.519Z\",\n  \"roles\": [\n    {\n      \"roleId\": 8127,\n      \"roleName\": \"string\"\n    },\n    {\n      \"roleId\": 5261,\n      \"roleName\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/SystemUsers/:systemUserId",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"JDTVCvUb1Vby7h@KB.ioy\",\n  \"username\": \"string\",\n  \"isActive\": false,\n  \"roleIds\": [\n    5391\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "SystemUsers",
+                        ":systemUserId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "systemUserId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"JDTVCvUb1Vby7h@KB.ioy\",\n  \"username\": \"string\",\n  \"isActive\": false,\n  \"roleIds\": [\n    5391\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "SystemUsers",
+                            ":systemUserId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "systemUserId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/SystemUsers/:systemUserId",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "SystemUsers",
+                        ":systemUserId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "systemUserId",
+                          "value": "2944"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/SystemUsers/:systemUserId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "SystemUsers",
+                            ":systemUserId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "systemUserId",
+                              "value": "2944"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/SystemUsers",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/SystemUsers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "SystemUsers"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/SystemUsers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "SystemUsers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"systemUserId\": 992,\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"isActive\": true,\n    \"createdAt\": \"1999-02-05T06:08:15.548Z\",\n    \"roles\": [\n      {\n        \"roleId\": 6500,\n        \"roleName\": \"string\"\n      },\n      {\n        \"roleId\": 4549,\n        \"roleName\": \"string\"\n      }\n    ]\n  },\n  {\n    \"systemUserId\": 4592,\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"isActive\": true,\n    \"createdAt\": \"2023-01-27T15:51:08.366Z\",\n    \"roles\": [\n      {\n        \"roleId\": 9274,\n        \"roleName\": \"string\"\n      },\n      {\n        \"roleId\": 2559,\n        \"roleName\": \"string\"\n      }\n    ]\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/SystemUsers",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bxS4Rfm@NIAdCMHOguvIizHajtpZgtRgCsEdB.ih\",\n  \"password\": \"stringstring\",\n  \"username\": \"string\",\n  \"roleIds\": [\n    847\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/SystemUsers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "SystemUsers"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"bxS4Rfm@NIAdCMHOguvIizHajtpZgtRgCsEdB.ih\",\n  \"password\": \"stringstring\",\n  \"username\": \"string\",\n  \"roleIds\": [\n    847\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/SystemUsers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "SystemUsers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"systemUserId\": 6961,\n  \"username\": \"string\",\n  \"email\": \"string\",\n  \"isActive\": false,\n  \"createdAt\": \"2017-12-10T13:36:53.519Z\",\n  \"roles\": [\n    {\n      \"roleId\": 8127,\n      \"roleName\": \"string\"\n    },\n    {\n      \"roleId\": 5261,\n      \"roleName\": \"string\"\n    }\n  ]\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7246"
+    },
+    {
+      "key": "bearerToken",
+      "value": ""
+    }
+  ]
+}
