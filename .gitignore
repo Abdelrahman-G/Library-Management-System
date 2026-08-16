@@ -1,3 +1,9 @@
 .vs/
 bin/
 obj/
+
+# Local database reset and working seed files
+Database/01_ResetData.sql
+Database/02_SampleData.sql
+Database/ResetData.sql
+Database/SampleData.sql
